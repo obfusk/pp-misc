@@ -52,11 +52,16 @@ git::repo { "/path/to/dir3":
 
 []: {{{1
 
-  The mkdir_p module lets you ...
+  The mkdir_p module lets you use `mkdir -p` from puppet.  Because
+  creating a parent directory for a puppet-managed dir or file is also
+  useful, there is also mkdir_p::dirname which `mkdir -p`'s the
+  dirname of the specified path.
 
   Examples:
 
 ```puppet
+mkdir_p { "/path/to/some/dir1": }
+mkdir_p::dirname { "/path/to/some/dir2/file": }
 ```
 
 []: }}}1
