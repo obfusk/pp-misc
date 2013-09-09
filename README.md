@@ -9,11 +9,55 @@
 []: }}}1
 
 ## Description
-[]: {{{1
 
   pp-misc - miscellaneous puppet modules
 
-  ...
+### git module
+
+[]: {{{1
+
+  The git module lets you clone a git repo to a specific path,
+  optionally specifying a branch to clone, or a branch to checkout
+  from a specific commit.  You can have puppet pull the repo every
+  time it is run, or leave it alone after the initial clone.  You can
+  specify whether git output should be shown by puppet.
+
+  Requires: Package['git'].
+
+  Examples:
+
+```puppet
+git::repo { "/path/to/dir1":
+  source    => 'https://example.com/repo1.git',
+  branch    => 'dev',
+  log       => on_failure,
+}
+
+git::repo { "/path/to/dir2":
+  source    => 'https://example.com/repo2.git',
+  branch    => 'dev',
+  pull      => true,
+  log_pull  => on_failure,
+}
+
+git::repo { "/path/to/dir3":
+  source    => 'https://example.com/repo3.git',
+  checkout  => ['foo', '5321cbf'],
+}
+```
+
+[]: }}}1
+
+## mkdir\_p module
+
+[]: {{{1
+
+  The mkdir_p module lets you ...
+
+  Examples:
+
+```puppet
+```
 
 []: }}}1
 
