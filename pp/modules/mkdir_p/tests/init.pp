@@ -1,1 +1,1 @@
-mkdir_p { "${::TESTDIR}/some/dir1": }
+mkdir_p { "${::testdir}/some/dir1": }
