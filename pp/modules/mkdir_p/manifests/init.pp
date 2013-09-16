@@ -2,7 +2,7 @@
 #
 # File        : modules/mkdir_p/manifests/init.pp
 # Maintainer  : Felix C. Stegerman <flx@obfusk.net>
-# Date        : 2013-09-09
+# Date        : 2013-09-16
 #
 # Copyright   : Copyright (C) 2013  Felix C. Stegerman
 # Licence     : GPLv2 or EPLv1
@@ -12,6 +12,7 @@
 define mkdir_p (
   $path = $title,
   $log  = on_failure,
+  $user = undef,
 ) {
   $path_sh = shellquote($path)
 
@@ -19,6 +20,7 @@ define mkdir_p (
     command   => "mkdir -p ${path_sh}",
     unless    => "test -d ${path_sh}",
     logoutput => $log,
+    user      => $user,
   }
 }
 

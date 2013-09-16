@@ -2,7 +2,7 @@
 #
 # File        : modules/mkdir_p/manifests/dirname.pp
 # Maintainer  : Felix C. Stegerman <flx@obfusk.net>
-# Date        : 2013-09-09
+# Date        : 2013-09-16
 #
 # Copyright   : Copyright (C) 2013  Felix C. Stegerman
 # Licence     : GPLv2 or EPLv1
@@ -12,13 +12,16 @@
 define mkdir_p::dirname (
   $path = $title,
   $log  = on_failure,
+  $user = undef,
 ) {
-  $path_sh = shellquote($path)
+  $path_sh  = shellquote($path)
+  $dn       = "\"$( dirname ${path_sh} )\""
 
   exec { "[mkdir_p::dirname] ${path}":
-    command   => "mkdir -p \"$( dirname ${path_sh} )\"",
-    unless    => "test -d \"$( dirname ${path_sh} )\"",
+    command   => "mkdir -p ${dn}",
+    unless    => "test -d ${dn}",
     logoutput => $log,
+    user      => $user,
   }
 }
 
