@@ -2,7 +2,7 @@
 
     File        : README.md
     Maintainer  : Felix C. Stegerman <flx@obfusk.net>
-    Date        : 2013-09-09
+    Date        : 2013-09-16
 
     Copyright   : Copyright (C) 2013  Felix C. Stegerman
 
@@ -20,7 +20,8 @@
   optionally specifying a branch to clone, or a branch to checkout
   from a specific commit.  You can have puppet pull the repo every
   time it is run, or leave it alone after the initial clone.  You can
-  specify whether git output should be shown by puppet.
+  specify whether git output should be shown by puppet; the user to
+  run the command as; and the timeout.
 
   Requires: Package['git'].
 
@@ -65,6 +66,20 @@ mkdir_p::dirname { "/path/to/some/dir2/file": }
 ```
 
 []: }}}1
+
+## Tests
+[]: {{{1
+
+  To run the tests, you will need a meta-project like
+  https://github.com/obfusk/napp-server.
+
+[]: }}}1
+
+## TODO
+
+  * test user/timeout?
+  * more specs/docs?
+  * ...
 
 ## License
 []: {{{1

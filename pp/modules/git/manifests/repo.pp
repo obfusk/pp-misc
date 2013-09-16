@@ -2,7 +2,7 @@
 #
 # File        : modules/git/manifests/repo.pp
 # Maintainer  : Felix C. Stegerman <flx@obfusk.net>
-# Date        : 2013-09-09
+# Date        : 2013-09-16
 #
 # Copyright   : Copyright (C) 2013  Felix C. Stegerman
 # Licence     : GPLv2 or EPLv1
@@ -21,6 +21,8 @@ define git::repo (
   $log_clone    = undef,
   $log_pull     = undef,
   $log_checkout = undef,
+  $user         = undef,
+  $timeout      = undef,
 ) {
   if $branch == undef {
     $branch_arg = ''
@@ -53,6 +55,8 @@ define git::repo (
     command   => "git clone ${branch_arg} ${clone_args}",
     creates   => "${path}/.git",
     logoutput => $log_cl,
+    user      => $user,
+    timeout   => $timeout,
     require   => Package['git'],
   }
 
@@ -61,6 +65,8 @@ define git::repo (
       command   => 'git pull',
       cwd       => $path,
       logoutput => $log_pu,
+      user      => $user,
+      timeout   => $timeout,
       require   => Exec["[git clone] ${path}"],
     }
   }
@@ -77,6 +83,8 @@ define git::repo (
       unless    => "test ${checkout_test}${checkout_branch}",
       cwd       => $path,
       logoutput => $log_ch,
+      user      => $user,
+      timeout   => $timeout,
       require   => Exec["[git clone] ${path}"],
     }
   }
