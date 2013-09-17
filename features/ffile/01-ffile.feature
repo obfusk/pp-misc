@@ -5,7 +5,7 @@ Feature: ffile tests
 
     When  I run `mkdir -p $TESTDIR/__ffile_tests__/some` with bash
     Then  it should succeed
-    When  I run `FILE=modules/ffile/tests/ffile.pp rake apply:file` with bash
+    When  I run `FILE=modules/ffile/tests/init.pp rake apply:file` with bash
     Then  it should succeed
     And   the last stdout should match:
       """
