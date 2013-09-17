@@ -1,5 +1,5 @@
 @slow @tmpdir @pp-misc @mkdir_p
-Feature: git tests
+Feature: mkdir_p tests
 
   Scenario: mkdir_p
 

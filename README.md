@@ -2,7 +2,7 @@
 
     File        : README.md
     Maintainer  : Felix C. Stegerman <flx@obfusk.net>
-    Date        : 2013-09-16
+    Date        : 2013-09-17
 
     Copyright   : Copyright (C) 2013  Felix C. Stegerman
 
@@ -11,6 +11,43 @@
 ## Description
 
   pp-misc - miscellaneous puppet modules
+
+### ffile module
+
+[]: {{{1
+
+  The ffile module creates a file by copying the first existing file
+  in:
+
+  * `puppet:///modules/site/ffile/${f}-${::fqdn}`
+  * `puppet:///modules/ffile/${f}-${::fqdn}`
+  * `puppet:///modules/site/ffile/${f}-${::hostname}`
+  * `puppet:///modules/ffile/${f}-${::hostname}`
+  * `puppet:///modules/site/ffile/${f}`
+  * `puppet:///modules/ffile/${f}`
+
+#
+
+  Where `$f` is either the `$path` of the file; or `$from`, if
+  specified.
+
+  Examples:
+
+```puppet
+ffile { "/some/file/some/where": }
+
+ffile { "/some/other/file":
+  from => 'some_other_file',
+}
+
+ffile { "/some/file/somewhere/else":
+  owner => 'felix',
+  group => 'felix',
+  mode  => 600,
+}
+```
+
+[]: }}}1
 
 ### git module
 
