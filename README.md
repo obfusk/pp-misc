@@ -2,7 +2,7 @@
 
     File        : README.md
     Maintainer  : Felix C. Stegerman <flx@obfusk.net>
-    Date        : 2013-09-17
+    Date        : 2013-09-26
 
     Copyright   : Copyright (C) 2013  Felix C. Stegerman
 
@@ -108,7 +108,7 @@ mkdir_p::dirname { "/path/to/some/dir2/file": }
 []: {{{1
 
   To run the tests, you will need a meta-project like
-  https://github.com/obfusk/napp-server.
+  https://github.com/obfusk/pp-meta.
 
 []: }}}1
 
